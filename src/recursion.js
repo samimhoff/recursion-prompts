@@ -40,21 +40,7 @@ var arraySum = function(array) {
   //need to not return function but add results. With that the stack can be interupted by a continual search for deeper arrays,
   //and then when that's done and you find a number you add. When you don't find one again, you let the function end?
   var sum = 0;
-  if(array.length < 1) {
-    return null;
-  }
-  if(array.length === 0){
-    return 0;
-  }
-  if (Array.isArray(array[0])) {
-   arraySum(array[0]);
-  }
-  if (!Array.isArray(array[0])) {
-    var newArray = array.slice();
-    newArray.shift()
-    sum += array[0] + arraySum(newArray);
-  }
-  return sum;
+  if (!Array.isArray(array[0]))
 };
 
 // 4. Check if a number is even.
