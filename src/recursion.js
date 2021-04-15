@@ -37,21 +37,24 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-  if(array.length === 0) {
-    return 0;
-  }
-  if(array.length < 0) {
+  //need to not return function but add results. With that the stack can be interupted by a continual search for deeper arrays,
+  //and then when that's done and you find a number you add. When you don't find one again, you let the function end?
+  var sum = 0;
+  if(array.length < 1) {
     return null;
   }
-  var newArray = array.slice();
-  newArray.shift();
+  if(array.length === 0){
+    return 0;
+  }
   if (Array.isArray(array[0])) {
-
+   arraySum(array[0]);
   }
   if (!Array.isArray(array[0])) {
-    return array[0] + arraySum(newArray);
+    var newArray = array.slice();
+    newArray.shift()
+    sum += array[0] + arraySum(newArray);
   }
-
+  return sum;
 };
 
 // 4. Check if a number is even.
